@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SIC | Principal</title>
+    <title>SIC | Home</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
     <link href="css/plugins/timeline.css" rel="stylesheet">
@@ -15,25 +15,16 @@
     <link href="font-a/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <style type="text/css" media="screen">
 
-      .container {
-        width: auto;
-        max-width: 1591px;
-      }
-      .container .credit {
-        margin: 20px 0;
-      }
       .navbar-default{
         background-color: #02588D;
         border-color: transparent;
       }
       .imglogo{
-        height: 44px;
-        width: 157px;
-        margin: -11px 0 0 0;
+        height: 43px;
+        width: 173px;
+        margin-top: -11px;
       }
-      .prin{
-        margin-top: 30px;
-      }
+
     </style>
 
 </head>
@@ -41,22 +32,19 @@
 <body>
     <div id="wrapper">
 
-    <!-- Fixed navbar -->
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-          <div class="container">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-                <a class="navbar-brand" href="javascript:void(0)"  >
-                    <img src="img/logosemicorg.png" class="imglogo" alt="">
-                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)"><img class="imglogo" src="img/logosemicorg.png" alt=""></a>
             </div>
+            <!-- /.navbar-header -->
+
             <ul class="nav navbar-top-links navbar-right">
-                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
                         <i class="fa fa-user fa-fw"></i> Admin <i class="fa fa-caret-down"></i>
@@ -71,53 +59,48 @@
                 </li>
                 <!-- /.dropdown -->
             </ul>
-          </div>
+            <!-- /.navbar-top-links -->
 
            <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                           <a class="active" href="index.html"><i class="fa fa-home fa-fw"></i> Principal</a>
+                           <a class="active" href="javascript:void(0)"><i class="fa fa-home fa-fw"></i> Principal</a>
                         </li>
                         <li>
-                           <a href="index.html"><i class="fa fa-cube fa-fw"></i> Inventario</a>
+                           <a href="views/inventario/index.php"><i class="fa fa-cube fa-fw"></i> Inventario</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-location-arrow fa-fw"></i> Entradas-salidas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Bitacora</a>
+                                    <a href="views/entradaSalidas/index.php ">Bitacora</a>
                                 </li>
                                 <li>
-                                    <a href="#">Generar orden</a>
+                                    <a href="views/entradaSalidas/generaOrden.php ">Generar orden</a>
                                 </li>
                                 <li>
-                                    <a href="#">Editar entrada-salida</a>
+                                    <a href="views/entradaSalidas/cambioArticulo.php ">Editar entrada-salida</a>
                                 </li>                                
 
                             </ul>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-users fa-fw"></i> Colaboradores</a>
+                            <a href="views/colaboradores/index.php"><i class="fa fa-users fa-fw"></i> Colaboradores</a>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-bookmark fa-fw"></i> Marcas y/o Tipo Articulos</a>
+                            <a href="views/marcas-tipoArt/index.php"><i class="fa fa-bookmark fa-fw"></i> Marcas y/o Tipo Articulos</a>
                         </li>
 
                         <li>
-                            <a href="forms.html"><i class="fa fa-cog fa-fw"></i> Configuración del sistema</a>
+                            <a href="views/config/index.php"><i class="fa fa-cog fa-fw"></i> Configuración del sistema</a>
                         </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
-
-
-
-
-
-
-        </div>
+            <!-- /.navbar-static-side -->
+        </nav>
 
 
         <div id="page-wrapper">
