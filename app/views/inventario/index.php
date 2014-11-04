@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIC | Inventario</title>
     <link href="../../../src/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../src/css/plugins/dataTables.bootstrap.css" rel="stylesheet">
     <link href="../../../src/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
     <link href="../../../src/css/sb-admin-2.css" rel="stylesheet">
     <link href="../../../src/fonts/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -19,6 +20,21 @@
         width: 173px;
         margin-top: -11px;
       }
+
+        .success {
+            color: #5cb85c;
+        }
+
+        .primary{
+            color: #428bca;
+        }
+
+      .dataTables_filter {
+      display: none; 
+      }
+
+
+
     </style>
 
 </head>
@@ -106,73 +122,139 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           <i class="fa fa-info-circle"></i> Indique criterio de busqueda en cuadro de texto ó agregue más articulos dando clic en <i class="fa fa-plus-circle"></i>  
+                           <i class="fa fa-info-circle primary"></i> Indique criterio de busqueda en cualquier de sus opciones, ó agregue más articulos dando clic en <i class="fa fa-plus-circle"></i>  
                         </div>
                         <div class="panel-body">
-                        <p align="right"><a href="#"> <i class="fa fa-plus-circle fa-4x"></i> </a></p>
+                            <div class=" jumbotron col-lg-11 " id="agregarEnInventario"> 
+                                <form id="formInventario" class=" form-horizontal" rule="from">
+                                     <div class="form-group col-lg-6 ">
+                                        <label for="codigo" class="col-lg-4 control-label">Codigo</label>
+                                        <div class="col-lg-8">
+                                          <input type="text" class="form-control" id="codigo" name="codigo" required>
+                                        </div>
+                                      </div>                                  
+                                                                              
+                                     <div class="form-group col-lg-6">
+                                        <label for="codigo" class="col-lg-4 control-label">Número de serie</label>
+                                          <div class="col-lg-8">
+                                            <div class="input-group">
+                                              <span class="input-group-addon">
+                                                N/A <input type="checkbox" id="noAplica">
+                                              </span>
+                                              <input type="text" class="form-control" id="numSerie" name="numSerie">
+                                            </div>
+                                          </div>
+                                      </div>
+
+                                     <div class="form-group col-lg-6 ">
+                                        <label for="tipoArticulo" class="col-lg-4 control-label">Tipo de articulo</label>
+                                        <div class="col-lg-8">
+                                        <select class="form-control" id="tipoArticulo" name="tipoArticulo" required>
+                                            <option value>- SELECCIONE -</option>
+                                            <option value="1">- 1 -</option>
+
+                                        </select>
+                                        </div>
+                                      </div>                                  
+                                                                              
+                                     <div class="form-group col-lg-6">
+                                        <label for="marca" class="col-lg-4 control-label">Marca</label>
+                                        <div class="col-lg-8">
+                                        <select class="form-control" id="marca" name="marca" required>
+                                            <option value=>- SELECCIONE -</option>
+                                            <option value="1">- 1 -</option>
+
+                                        </select>
+                                        </div>
+                                      </div>
+
+                                     <div class="form-group col-lg-6">
+                                        <label for="modelo" class="col-lg-4 control-label">Modelo</label>
+                                        <div class="col-lg-8">
+                                          <input type="text" class="form-control" id="modelo" name="modelo" required>
+                                        </div>
+                                      </div>
+
+                                     <div class="form-group col-lg-6">
+                                        <label for="especificaciones" class="col-lg-4 control-label">Especificaciones técnicas</label>
+                                        <div class="col-lg-8">
+                                          <textarea  class="form-control" id="especificaciones" name="especificaciones" required rows="4"></textarea> 
+                                        </div>
+                                      </div>                                      
+
+                                     <div class="form-group col-lg-12 ">
+                                        <div class="col-lg-offset-9">
+                                              <input type="button" class="btn btn-default btn-lg" value="Cancelar" id="cancel">
+                                              <input type="submit" class="btn btn-primary btn-lg " value="Guardar">
+                                        </div>
+                                      </div>
+                                </form>                                                                                                                                                                                                                                     
+                            </div>
                             <div class="row">
-                                <form id="formInventario" class=" form-horizontal">
-                                     <div class="form-group col-md-5 ">
-                                        <label class="col-lg-4 control-label">Codigo</label>
-                                        <div class="col-lg-8">
-                                          <input type="text" class="form-control" id="codigo" name="">
-                                        </div>
-                                      </div>                                  
-                                                                              
-                                     <div class="form-group col-md-5">
-                                        <label class="col-lg-4 control-label">Número de serie</label>
-                                        <div class="col-lg-8">
-                                          <input type="text" class="form-control" id="" name="">
-                                        </div>
-                                      </div>
+                                <div class="col-lg-4">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                      <li role="presentation" class="active"><a href="#porCriterio" role="tab" data-toggle="tab">Criterio</a></li>
+                                      <li role="presentation"><a href="#porTipoMarca" role="tab" data-toggle="tab">Tipo Articulo</a></li>
+                                      <li role="presentation"><a href="#porMarca" role="tab" data-toggle="tab">Marca</a></li>
+                                    </ul>
 
-                                     <div class="form-group col-md-5 ">
-                                        <label class="col-lg-4 control-label">Tipo de articulo</label>
-                                        <div class="col-lg-8">
-                                          <input type="text" class="form-control" id="codigo" name="">
-                                        </div>
-                                      </div>                                  
-                                                                              
-                                     <div class="form-group col-md-5">
-                                        <label class="col-lg-4 control-label">Marca</label>
-                                        <div class="col-lg-8">
-                                          <input type="text" class="form-control" id="" name="">
-                                        </div>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                      <div role="tabpanel" class="tab-pane active" id="porCriterio">
+                                         <div class="form-group ">
+                                            <div class="col-lg-12">
+                                              <input type="text" class="form-control" id="criterioGral" name="criterioGral" placeholder="Buscar..." >
+                                            </div>
+                                         </div>                                            
                                       </div>
-                                </form>
+                                      <div role="tabpanel" class="tab-pane" id="porTipoMarca">
+                                         <div class="form-group ">
+                                            <div class="col-lg-12">
+                                              <select id="criterioTipoArticulo" class="form-control" name="criterioTipoArticulo">
+                                              <option >- SELECCIONE -</option>
+                                              
+                                              </select>
+                                            </div>
+                                         </div>    
+                                      </div>
+                                      <div role="tabpanel" class="tab-pane" id="porMarca">
+                                         <div class="form-group ">
+                                            <div class="col-lg-12">
+                                              <select id="criterioTipoArticulo" class="form-control" name="criterioMarca">
+                                              <option >- SELECCIONE -</option>
+                                              
+                                              </select>
+                                            </div>
+                                         </div>   
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                  <p align="right"><a href="javascript:void(0)" id="btnAgregarEnInventario"> 
+                                  <i class="fa fa-plus-circle fa-4x success" ></i> </a></p>
+                                </div>
+                            </div>
+                            <div class="clearfix">&nbsp;</div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Codigo</th>
+                                            <th>Núm.Serie</th>
+                                            <th>Tipo Articulo</th>
+                                            <th>Marca</th>
+                                            <th>Modelo</th>
+                                            <th>Espc.Tecnicas</th>
+                                            <th>-</th>
+                                            <th>-</th>
 
-                                    <!--     <div class="form-group">
-                                            <label class="col-lg-2 control-label">Email</label>
-                                            <div class="col-lg-10">
-                                              <input type="text" class="form-control" id="" name="">
-                                            </div>
-                                          </div>
-                                         <div class="form-group">
-                                            <label class="col-lg-2 control-label">Email</label>
-                                            <div class="col-lg-10">
-                                              <input type="text" class="form-control" id="" name="">
-                                            </div>
-                                          </div>
-                                         <div class="form-group">
-                                            <label class="col-lg-2 control-label">Email</label>
-                                            <div class="col-lg-10">
-                                              <input type="text" class="form-control" id="" name="">
-                                            </div>
-                                          </div>
-                                         <div class="form-group">
-                                            <label class="col-lg-2 control-label">Email</label>
-                                            <div class="col-lg-10">
-                                              <input type="text" class="form-control" id="" name="">
-                                            </div>
-                                          </div>                                                                                                                                                                                                  
-                                         
-                                         <div>
-                                           <button class="btn btn-primary span5" type="submit" id="submitform">Guardar</button>
-                                           <button class="btn span5 btn-default" type="button" id="cancelAgregar">Cancelar</button>
-                                        </div>       -->                                                                                                                                                                                                                                          
-  
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                             <!-- /.row (nested) -->
+
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -189,9 +271,55 @@
 
     <script src="../../../src/js/jquery.js"></script>
     <script src="../../../src/js/bootstrap.min.js"></script>
+    <script src="../../../src/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="../../../src/js/plugins/dataTables/dataTables.bootstrap.js"></script>
     <script src="../../../src/js/plugins/metisMenu/metisMenu.min.js"></script>
     <script src="../../../src/js/sb-admin-2.js"></script>
+    <script>
+    $('#dataTables-example').dataTable({
+         stateSave: true,
+        /*
+        "dom": 'T<"clear">lfrtip',
 
+        "tableTools": {
+            "sSwfPath": "img/swf/copy_csv_xls.swf",
+           "aButtons": [ 
+                {
+                    "sExtends": "print",
+                    "sButtonText": "Imprimir",
+                    "sInfo": "<p> <h2> Vista de impresión </h2></p> <p>Por favor, utilice la función de impresión de su navegador para imprimir esta tabla. Pulse ESC cuando haya terminado.</p>"
+                },
+                {
+                    "sExtends": "copy",
+                    "sButtonText": "Copiar"
+                },
+                {
+                    "sExtends": "csv",
+                    "sButtonText": "Excel"
+                }
+            ]
+        },
+        */
+            "language": {
+                "url": "../../../src/js/spanish.json"
+            }
+        });
+
+     $('#noAplica').click(function(){
+       $('#numSerie').attr('disabled',this.checked)
+    });    
+
+     $('#agregarEnInventario').hide(); 
+        $("#btnAgregarEnInventario" ).click(function() {
+            $( "#agregarEnInventario" ).fadeToggle( "fast", "linear" );
+    });
+
+        $("#cancel" ).click(function() {
+            $( "#agregarEnInventario" ).fadeToggle( "fast", "linear" );
+    });
+
+
+    </script>
 </body>
 
 </html>
